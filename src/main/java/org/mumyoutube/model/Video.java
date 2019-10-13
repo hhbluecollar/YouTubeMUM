@@ -2,15 +2,16 @@ package org.mumyoutube.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import org.mumyoutube.constants.AppConstant;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import java.nio.file.Path;
 
 @Getter
 @Setter
@@ -22,21 +23,21 @@ public class Video {
     @Id
     @GeneratedValue
     private Long videoId;
-    @NotBlank
-    private int userId;
+    @NonNull
+    private long userId;
     @NotBlank
     private String videoPath;
-    private int no_dislikes;
-    private int no_likes;
-    @NotBlank
+    private Long no_dislikes;
+    private Long no_likes;
     private String comment;
+    private String videoDescription;
 
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -48,19 +49,19 @@ public class Video {
         this.videoPath = videoPath;
     }
 
-    public int getNo_dislikes() {
+    public Long getNo_dislikes() {
         return no_dislikes;
     }
 
-    public void setNo_dislikes(int no_dislikes) {
+    public void setNo_dislikes(Long no_dislikes) {
         this.no_dislikes = no_dislikes;
     }
 
-    public int getNo_likes() {
+    public Long getNo_likes() {
         return no_likes;
     }
 
-    public void setNo_likes(int no_likes) {
+    public void setNo_likes(Long no_likes) {
         this.no_likes = no_likes;
     }
 
@@ -78,5 +79,13 @@ public class Video {
 
     public void setVideoId(Long videoId) {
         this.videoId = videoId;
+    }
+
+    public String getVideoDescription() {
+        return this.videoDescription;
+    }
+
+    public void setVideoDescription(String videoDescription) {
+        this.videoDescription = videoDescription;
     }
 }

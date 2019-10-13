@@ -18,7 +18,7 @@ import javax.validation.constraints.NotBlank;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
     @NotBlank
     private String username;
@@ -59,3 +59,6 @@ public class User {
         this.userId = userId;
     }
 }
+
+
+

@@ -5,12 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import org.mumyoutube.constants.AppConstant;
+import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,7 +26,14 @@ public class Playlist {
     private String playlistName;
 
     @NonNull
-    private  int userId;
+    private  Long userId;
+
+    @NonNull
+    private  Long videoId;
+
+    @JoinTable
+    @OneToMany
+    private List<Video> videos;
 
     public String getPlaylistName() {
         return playlistName;
@@ -37,11 +43,11 @@ public class Playlist {
         this.playlistName = playlistName;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -51,5 +57,14 @@ public class Playlist {
 
     public void setPlaylistId(Long playlistId) {
         this.playlistId = playlistId;
+    }
+
+    public Long getVideoId() {    return videoId;}
+
+    public void setVideoId(Long videoId) {  this.videoId = videoId;}
+
+    public List<Video> getVideos() {return videos;}
+
+    public void setVideos(List<Video> videos) { this.videos = videos;
     }
 }
